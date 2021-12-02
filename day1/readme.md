@@ -4,5 +4,8 @@ Reading input.txt from: /Users/stef.vanhooijdonk/Code/stefvanhooijdonk/aoc2021/d
 Read input.txt with: 2000 measurements.
 
 How many measurements are larger than the previous measurement?
+Step 1
+Measurements are larger than the previous measurement = xxx.
 
-Measurements are larger than the previous measurement = xxxx.
+Step 2
+Measurement windows are larger than the previous measurement = xxx.
