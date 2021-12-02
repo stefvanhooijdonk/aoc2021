@@ -21,6 +21,9 @@ namespace day2
             var totalForwards = 0;
             var depthReached = 0;
             var instructionsProcessed = 0;
+            var currentAim = 0;
+            var depthReachedWithAim = 0;
+
             foreach(var instruction in instructions){
 
                 if (!string.IsNullOrEmpty(instruction)){
@@ -28,25 +31,38 @@ namespace day2
                     var instructionDirectionValue = instruction.Split(' ').GetValue(1);
 
                     if(instruction.StartsWith(forward)){
-                        totalForwards += Convert.ToInt32(instructionDirectionValue);
+                        var forwardInt = Convert.ToInt32(instructionDirectionValue);
+                        totalForwards += forwardInt;
+                        depthReachedWithAim += (currentAim * forwardInt);
+
                         instructionsProcessed++;
                     }
                     if(instruction.StartsWith(up)){
-                        //depthReached = Math.Max(0, depthReached-=Convert.ToInt32(instructionDirectionValue));
-                        depthReached-=Convert.ToInt32(instructionDirectionValue);
+                        depthReached -= Convert.ToInt32(instructionDirectionValue);
+                        currentAim = depthReached;
                         instructionsProcessed++;
                     }
                     if(instruction.StartsWith(down)){
-                        depthReached +=Convert.ToInt32(instructionDirectionValue);
+                        depthReached += Convert.ToInt32(instructionDirectionValue);
+                        currentAim = depthReached;
                         instructionsProcessed++;
                     }
                 }
             }
 
             Console.WriteLine("Processed {0} instructions.",instructionsProcessed);
+
+            Console.WriteLine("Step 1.\r\n");
+
             Console.WriteLine("Forward movements total {0}.",totalForwards);
             Console.WriteLine("Depth reached {0}.\r\n",depthReached);
             Console.WriteLine("What do you get if you multiply your final horizontal position by your final depth {0}.\r\n",depthReached*totalForwards);
+
+            Console.WriteLine("Step 2.\r\n");
+            Console.WriteLine("Forward movements total {0}.",totalForwards);
+            Console.WriteLine("Depth reached {0}.\r\n",depthReachedWithAim);
+            Console.WriteLine("What do you get if you multiply your final horizontal position by your final depth {0}.\r\n",depthReachedWithAim*totalForwards);
+
         }
     }
 }
