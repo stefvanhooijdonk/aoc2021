@@ -21,8 +21,14 @@ namespace day6
             Console.WriteLine("After 80 days, total fish {0}.\r\n", fc80.TotalFish());
 
             var fc256 = new LargeFishCollection(lines[0]);
+            var measure = new System.Diagnostics.Stopwatch();
+            measure.Start();
             fc256.ProcessMultipleDays(256);
-            Console.WriteLine("After 256 days, total fish {0}.\r\n", fc256.TotalFish());
+            measure.Stop();
+            var microseconds = measure.ElapsedTicks /(System.Diagnostics.Stopwatch.Frequency / (1000L*1000L));
+            Console.WriteLine("After 256 days, total fish {0} in {1}ms.\r\n", 
+                fc256.TotalFish(),
+                microseconds);
         }
     }
     
